@@ -1,1 +1,18 @@
-<h3>Home</h3>
+<h3>Welcome to Chalkable Attendance</h3>
+
+
+<% if user_signed_in? %>
+    <%= render 'signed_in' %>
+
+<% else %>
+
+    <section id="intro">
+      <div class="caption container">
+        <h2>Sign up and add your classes.</h2>
+      </div>
+    </section>
+
+
+
+
+<% end %>

@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  has_many :sections
+
 end

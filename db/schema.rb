@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530231629) do
+ActiveRecord::Schema.define(version: 20140531051943) do
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "student_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
