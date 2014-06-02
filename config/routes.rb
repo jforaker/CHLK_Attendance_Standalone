@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'import_students/create'
 
-  get 'sections/index'
-
-  get 'sections/create'
-
-  get 'sections/new'
-
-  get 'sections/destroy'
-
-  get 'sections/show'
+  get 'import_students/new'
 
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
-  resources :sections
+  resources :students
+  resources :sections do
+    resources :students   do
+      collection { post :import }
+    end
+  end
+
 
 end

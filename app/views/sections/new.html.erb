@@ -1,8 +1,61 @@
-<h1>Add a class</h1>
+<div class="container">
+  <div class="row">
+    <section class="new-class" data-type="settings">
 
-<%= simple_form_for @section do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :student_count %>
-    <%= f.button :submit %>
-<% end %>
+      <h1>Add a class</h1>
+
+      <%= simple_form_for @section, :html => { :role => 'form', :"data-type" => 'signup', :id => 'former'} do |f| %>
+          <p>
+            <%= f.label :name, wrapper: "basic", label: false %>
+            <%= f.input :name, wrapper: "basic", label: false %>
+          </p>
+
+          <p>
+            <%= f.label :description, wrapper: "basic", label: false %>
+            <%= f.input :description, wrapper: "basic", label: false %>
+
+          </p>
+
+          <p>
+            <%= f.label :student_count, wrapper: "basic", label: false %>
+            <%= f.input :student_count, wrapper: "basic", label: false %>
+
+          </p>
+          <!--<p>-->
+
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Monday</button>
+            <%= f.input :monday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Tuesday</button>
+             <%= f.input :tuesday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Wednesday</button>
+             <%= f.input :wednesday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Thursday</button>
+             <%= f.input :thursday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Friday</button>
+             <%= f.input :friday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Saturday</button>
+             <%= f.input :saturday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+        <span class="button-checkbox">
+            <button type="button" class="btn" data-color="info">Sunday</button>
+             <%= f.input :sunday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
+        </span>
+
+
+          <%= f.button :submit, :class => 'sign-btn', :'data-type' => 'settings' %>
+      <% end %>
+
+    </section>
+  </div>
+</div>

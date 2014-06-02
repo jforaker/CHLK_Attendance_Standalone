@@ -1,19 +1,22 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<% if current_user %>
+
+    <!--if signed in show settings / logout-->
+
+    <%= render 'layouts/nav_header_links/signed_in' %>
+
+<% elsif !current_user && action_name != 'new' %>
+
+    <!--not signed in == show all nav links (index / about / how works) -->
+
+    <%= render 'layouts/nav_header_links/not_signed_in' %>
+
+<% else %>
+
+    <!--only on signup page == show home / login -->
+
+    <%= render 'layouts/nav_header_links/signup_page' %>
+
+<% end %>
+
+
+<%= render 'layouts/login_modal' %>

@@ -1,0 +1,23 @@
+<header data-type="settings">
+  <div class="header-wrap">
+    <div class="container">
+      <div class="lock"></div>
+      <div class="logo">
+        <h1><%= link_to 'Chalkable Attendance', root_path %></h1>
+      </div>
+      <a href="#" class="hamburger"></a>
+    </div>
+    <div id="navver">
+      <ul>
+        <% if user_signed_in? %>
+            <% if current_user.admin? %>
+                <li><%= link_to 'Users', users_path %></li>
+            <% end %>
+        <% end %>
+        <li><%= link_to 'My Classes', sections_path %></li>
+        <li><%= link_to 'Settings', edit_user_registration_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete', :class => 'btn-signup btn-info' %></li>
+      </ul>
+    </div>
+  </div>
+</header>

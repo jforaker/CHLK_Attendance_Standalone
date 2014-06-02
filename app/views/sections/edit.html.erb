@@ -1,0 +1,10 @@
+<h1>Editing class</h1>
+
+<%= simple_form_for @section do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :student_count %>
+    <%= f.button :submit %>
+<% end %>
+
+<%= link_to "Remove class", {:controller => :sections, :action => 'destroy', :id => @section.id }, :remote => false, :method => :delete, :class => "tagsinput-remove-link" %>

@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   end
 
   has_many :sections
+  has_many :students,  :through => :sections
 
 end

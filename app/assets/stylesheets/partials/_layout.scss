@@ -1,0 +1,55 @@
+// breakpoints
+
+$XXS:   20em;     // 320px
+$XS:    30em;    // 480px
+$S:     37.5em;   // 600px
+$M:     48em;     // 768px
+$L:     64em;     // 1024px
+$XL:    75em;     // 1200px
+$XXL:   90em;     // 1440px
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == XXS {
+   @media only screen and (min-width: $XXS) { @content; } 
+  }
+  @else if $canvas == XS {
+   @media only screen and (min-width: $XS) { @content; } 
+  }
+  @else if $canvas == S {
+   @media only screen and (min-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+  @else if $canvas == XL {
+   @media only screen and (min-width: $XL) { @content; } 
+  }
+  @else if $canvas == XXL {
+   @media only screen and (min-width: $XXL) { @content; } 
+  }
+}
+
+// grid 
+
+.container {
+  width: 90%;
+  max-width: $XL;
+  margin: 0 auto;
+
+  &::after { // clearfix
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin column($percentage) {
+  width: 100% * $percentage;
+  float: left;
+}
+

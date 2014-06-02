@@ -1,0 +1,142 @@
+//= depend_on_asset "hamburger.svg"
+//= depend_on_asset "homepage-bg.jpg"
+//= depend_on_asset "homepage-clock.svg"
+//= depend_on_asset "homepage-percentage.svg"
+//= depend_on_asset "x.png"
+//= depend_on_asset "x@2x.png"
+//= depend_on_asset "arrows-select.svg"
+//= depend_on_asset "arrow.svg"
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+
+@import 'compass';
+
+@include global-reset; // compass style reset
+
+@import 'partials/variables'; // colors, fonts etc...
+
+@import 'partials/mixins'; // custom mixins
+
+@import 'partials/placeholders'; // clearfix, centering elements etc...
+
+@import 'partials/layout'; // responsive grid (susy) and media queries
+
+@import 'header_nav';
+@import 'index';
+
+
+/* --------------------------------
+
+Base rules
+
+-------------------------------- */
+
+
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  @include box-sizing(border-box);
+}
+
+body {
+  font: {
+    size: 100%;
+    family: $base-font;  // $base-font;
+  }
+  color: $main-text;
+  background-color: $b-color;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+a {
+  color: $a;
+  text-decoration: none;
+  font-family: $base-font;
+}
+
+img, embed, object, video, svg {
+  max-width: 100%;
+}
+
+input, textarea {
+  font-family: $base-font;
+  @include font-size(16px);
+}
+
+h1 {
+  font-family: $base-font;
+  @include font-size(18px);
+  font-weight: 700;
+  color: $main-title;
+  vertical-align: middle;
+
+  @include MQ(M) {
+    @include font-size(22px);
+  }
+
+  @include MQ(L) {
+    @include font-size(25px);
+  }
+}
+
+h2 {
+  font-family: $base-narrow-font;
+  @include font-size(18px);
+  font-weight: 400;
+  color: $main-title;
+  // margin: 0 auto;
+  vertical-align: middle;
+
+  @include MQ(M) {
+    @include font-size(20px);
+  }
+
+  @include MQ(L) {
+    @include font-size(35px);
+  }
+}
+
+h3 {
+  font-family: $base-narrow-font;
+  @include font-size(18px);
+  font-weight: 400;
+  color: $main-title;
+  vertical-align: middle;
+}
+
+h4 {
+  font-family: $base-font;
+  @include font-size(20px);
+  font-weight: 400;
+  color: $main-title;
+  vertical-align: middle;
+  padding-bottom: 15px;
+
+  @include MQ(M) {
+    @include font-size(35px);
+  }
+}
+
+p {
+  padding: 10px 0 0 0;
+  @include font-size(14px);
+  font-family: $base-font;
+  color: $main-text;
+  line-height: 1.5;
+
+  @include MQ(M) {
+    @include font-size(16px);
+  }
+}
+

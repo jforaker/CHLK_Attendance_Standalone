@@ -4,8 +4,22 @@ one:
   name: MyString
   description: MyString
   student_count: 1
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false
 
 two:
   name: MyString
   description: MyString
   student_count: 1
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false

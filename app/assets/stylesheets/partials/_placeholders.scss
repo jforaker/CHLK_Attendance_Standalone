@@ -1,0 +1,46 @@
+@import "compass";
+
+%speed { // Force Hardware Acceleration in WebKit
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+}
+
+%clearfix { // Force element to self-clear its children
+  *zoom: 1;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+%center { // Center horizontally and vertically an absolute positioned element
+	top: 50%;
+	left: 50%;
+	@include translate(-50%, -50%);
+}
+
+%center-y { // Center vertically an absolute positioned element
+	top: 50%;
+	@include translateY(-50%);
+}
+
+%center-x { // Center horizontally an absolute positioned element
+	left: 50%;
+	@include translateX(-50%);
+}
+
+%scroll-touch { // Make scrooling smoother on mobile devices 
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+%remove-appearance { // remove native browser appearance
+	-webkit-appearance: none;
+   	-moz-appearance:    none;
+   	appearance:         none;
+}

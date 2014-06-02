@@ -6,14 +6,17 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.1.1.1'
 gem 'devise'
 gem 'figaro', :github=>"laserlemon/figaro"
 gem 'pundit'
+gem 'compass-rails'
+gem 'font-awesome-sass'
+gem 'best_in_place'
+gem 'roo'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
