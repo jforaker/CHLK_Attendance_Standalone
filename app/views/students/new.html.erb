@@ -19,6 +19,8 @@
 
           <p>
             <%= f.input :section_id, :as => :hidden, :input_html => { :value => @section } %>
+            <%= f.input :teacher_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+
           </p>
 
 

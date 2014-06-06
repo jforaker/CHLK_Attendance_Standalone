@@ -1,4 +1,8 @@
 class SectionsController < ApplicationController
+
+  before_filter :authenticate_user!
+
+
   def index
     @user = User.find_by_id(current_user.id)
     @sections = current_user.sections.order('updated_at DESC')
@@ -35,21 +39,22 @@ class SectionsController < ApplicationController
   def show
     @section = Section.find(params[:id])
     @students = @section.students
-    respond_to do |format|
-      format.html
-      format.csv { send_data @students.to_csv }
-      #format.xls # { send_data @products.to_csv(col_sep: "\t") }
-      format.json { render json: @students}
+    unless @section.user_id != current_user.id
+      respond_to do |format|
+        format.html
+        format.json { render json: @section}
+      end
+    else
+      flash[:error] = "Error. Not your section."
+      redirect_to sections_path
     end
   end
 
   def update
     @section = Section.find(params[:id])
-    clazz_params = params.require(:section).permit(:section, :description, :name, :student_count, :id, :user_id)
-
     respond_to do |format|
-      if @section.update_attributes(clazz_params)
-        format.html { redirect_to @section, notice: "#{clazz_params['name']}"' was successfully updated.' }
+      if @section.update_attributes(section_params)
+        format.html { redirect_to @section, notice: "#{section_params['name']}"' was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

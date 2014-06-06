@@ -1,85 +1,6 @@
-<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-  <div class="well profile">
-    <div class="col-sm-12">
-      <div class="col-xs-12 col-sm-8">
-        <h1><%= @section.name  %></h1>
-        <p><strong>About: </strong> <%= @section.description  %> </p>
-        <p><strong>Days: </strong>
-          <% if @section.monday %>
-              <span class="tags">Monday</span>
-          <% end %>
-          <% if @section.tuesday %>
-              <span class="tags">Tuesday</span>
-          <% end %>
-          <% if @section.wednesday %>
-              <span class="tags">Wednesday</span>
-          <% end %>
-          <% if @section.thursday %>
-              <span class="tags">Thursday</span>
-          <% end %>
-          <% if @section.friday %>
-              <span class="tags">Friday</span>
-          <% end %>
-          <% if @section.saturday %>
-              <span class="tags">Saturday</span>
-          <% end %>
-          <% if @section.sunday %>
-              <span class="tags">Sunday</span>
-          <% end %>
-        </p>
-        <br />
-      </div>
-      <div class="col-xs-12 col-sm-4 text-center">
-        <figure>
-          <div class="img-circle img-responsive">
-            <i class="fa fa-users icon"></i>
-          </div>
-        </figure>
-      </div>
-    </div>
-    <div class="col-xs-12 divider text-center">
-
-      <div class="col-xs-12 col-sm-6 emphasis">
-        <h2><strong> <%= @section.student_count %>  </strong></h2>
-        <p><small>Students</small></p>
-        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> View Something </button>
-      </div>
-
-      <div class="col-xs-12 col-sm-6 emphasis">
-        <h2><strong> <%= @section.student_count %>  </strong></h2>
-        <p><small>Students</small></p>
-        <div class="btn-group dropup btn-block">
-          <button type="button" class="btn btn-primary opts"><span class="fa fa-gear"></span> Options </button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu text-left" role="menu">
-            <li><a href="#"><span class="fa fa-question-circle pull-right"></span> Do something else </a></li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to edit_section_path(@section) do %>
-                  Edit
-                  <span class="fa fa-pencil-square-o pull-right"></span>
-              <% end %>
-            </li>
-          </ul>
-
-        </div>
-        <%= link_to 'Add another class', new_section_path(@section), class: 'btn-signup' %>     <br>
-        <%= link_to 'add student', new_section_student_path(@section) %>
-
-      </div>
-    </div>
-  </div>
-</div>
 
 
-
-
-
-
-
+<%= render 'sections/partials/profile' %>
 
 
 <div class="container">
@@ -117,12 +38,12 @@
                 <%= (i+1) %>
               </td>
               <td class="name">
-                <!--<input type="text" name='name0'  placeholder='Name' class="form-control"/>-->
-                <%= best_in_place student, :name, :type => :input, :html_attrs => {:class=>"dummy"} %>
+                <%= link_to student.name, section_student_path(:section_id => student.section_id, :id => student.id), class: 'btn-signup' %>
+                <!--<#%= best_in_place student, :name, :type => :input, :html_attrs => {:class=>"dummy"} %>-->
               </td>
               <td class="note">
                 <% if student.note %>
-                    <%= link_to student.note, student_path(student.id), class: 'btn-signup' %>
+                    <%= link_to student.note, section_student_path(:section_id => student.section_id, :id => student.id), class: 'btn-signup' %>
                 <% else %>
                     <input type="text" name='mail0' placeholder='Note' class="form-control"/>
                 <% end %>
@@ -140,37 +61,34 @@
 
       </div>
       </div>
-      <a id="add_row" class="btn btn-default pull-left">Add Student</a>
-      <a id='save-students' class="pull-right btn btn-primary">Save Students</a>
-      <!--<a id='delete_row' class="pull-right btn btn-default">Delete Row</a>-->
-
-      <h2>Import Students</h2>
-
-      <%= form_tag import_section_students_path(@section.id), multipart: true do %>
-          <%= file_field_tag :file %>
-          <%= hidden_field_tag :section_id, @section.id %>
-          <%= submit_tag "Import" %>
-      <% end %>
 
 
   <% end %>
 
+  <div class="row">
+
+    <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+      <h2>Import Students</h2>
+
+      <div class="input-group image-preview">
+
+        <%= form_tag import_section_students_path(@section.id), id: 'inputer', multipart: true do %>
+
+            <%= file_field_tag :file, 'data-filename-placement' => 'inside', title: 'Browse' %>
+            <%= hidden_field_tag :section_id, @section.id %>
+            <%= hidden_field_tag :teacher_id, current_user.id %>
+            <%= submit_tag "Import", class: 'btn btn-disabled', disabled: true, id: 'impBtn' %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row full-calendar">
+    <div id="calendar" style="display: none"></div>
+    <input type="hidden" id="section_path" data-name="<%= @section.name %>" data-path="<%= @section.id %>" name="section_path" value="foo">
+  </div>
+
 </div>
-
-<script type="text/javascript">
-
-
-    $('.best_in_place').bind("ajax:success", function(){
-        console.log($(this));
-        if($(this)[0].innerHTML == "false"){
-            jQuery(this).css('color', '#dc5454')
-        } else {
-            jQuery(this).css('color', 'rgb(74, 155, 91)')
-        }
-    });
-
-
-
-
-
-</script>

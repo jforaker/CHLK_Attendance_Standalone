@@ -1,0 +1,131 @@
+//@import 'partials/variables'; // colors, fonts etc...
+//@import 'partials/mixins'; // custom mixins
+//@import 'partials/placeholders'; // clearfix, centering elements etc...
+//@import 'partials/layout'; // responsive grid (susy) and media queries
+//
+//header[role='banner'] {
+//  height: 70px;
+//  background: $blue image-url('header_bg.jpg') repeat-x;
+//  @include background-size(252px 70px);
+//  @include retina('header_bg@2x.jpg');
+//  @include box-shadow(0 1px 2px rgba(black, .3));
+//  position: relative;
+//  z-index: 2;
+//  .logo, .logo h1 {
+//    display: inline-block;
+//    a {
+//      display: inline-block;
+//      width: 180px;
+//      height: 30px;
+//      background: image-url('logo.png') no-repeat;
+//      text-indent: 120%;
+//      overflow: hidden;
+//      white-space: nowrap;
+//      @include retina('logo@2x.png');
+//      @include background-size(180px 30px);
+//      margin-top: 14px;
+//      @include MQ(XS) {
+//        width: 150px;
+//        height: 25px;
+//        @include background-size(150px 25px);
+//        margin-top: 17px;
+//      }
+//    }
+//  }
+//  nav {
+//    position: absolute;
+//    right: 0;
+//    top: 50%;
+//    @include translateY(-50%);
+//    margin-top: -4px;
+//    .mainNav {
+//      li {
+//        display: inline-block;
+//        margin-left: 1em;
+//        a {
+//          font-size: .8125em;
+//          font-weight: bold;
+//          color: #fff;
+//          text-decoration: none;
+//          text-transform: uppercase;
+//          text-shadow: 0 1px 1px rgba(black, .3);
+//          padding: .4em 1em;
+//          @include MQ(XL) {
+//            &:hover {
+//              text-shadow: 0 1px 3px rgba(black, .5);
+//            }
+//          }
+//        }
+//        &:last-child a {
+//          background: $blue;
+//          @include transition(background .3s);
+//          border: 1px solid #24566b;
+//          border-radius: 4px;
+//          @include box-shadow(inset 0 1px 0 rgba(white, .2), 0 1px 2px rgba(black, .2));
+//          @include MQ(XL) {
+//            &:hover {
+//              background: lighten($blue, 4%);
+//            }
+//          }
+//        }
+//      }
+//    }
+//    &.openNavigation {
+//      display: inline-block;
+//    }
+//    @include MQ(M) {
+//      display: none;
+//      top: 51px;
+//      right: 1px;
+//      @include translateY(0);
+//      margin-top: 0;
+//      width: 100%;
+//      max-width: 20em;
+//      .mainNav {
+//        background: #fff;
+//        border-radius: 4px 0 4px 4px;
+//        @include box-shadow(0 3px 10px rgba(black, .4));
+//        li {
+//          display: block;
+//          margin-left: 0;
+//          a {
+//            display: block;
+//            color: $darkGrey;
+//            text-shadow: none;
+//            padding: 2em;
+//            @include box-shadow(0 1px 0 #e7e7e7);
+//          }
+//          &:last-child a {
+//            background: transparent;
+//            border: none;
+//            @include box-shadow(none);
+//          }
+//        }
+//      }
+//    }
+//  }
+//  .listMenu {
+//    display: none;
+//    position: absolute;
+//    right: 0;
+//    width: 50px;
+//    height: 40px;
+//    background: image-url('list.png') no-repeat center center;
+//    @include background-size(30px 19px);
+//    @include retina('list@2x.png');
+//    background-color: $blue;
+//    top: 50%;
+//    @include translateY(-50%);
+//    margin-top: -4px;
+//    border: 1px solid #24566b;
+//    border-radius: 4px;
+//    @include box-shadow(inset 0 1px 0 rgba(white, .2), 0 1px 2px rgba(black, .2));
+//
+//    @include MQ(M) {
+//      display: inline-block;
+//    }
+//    &.clicked {
+//      border-radius: 4px 4px 0 0;
+//    }
+//  }
+//}

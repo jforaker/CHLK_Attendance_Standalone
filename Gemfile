@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
@@ -18,6 +19,11 @@ gem 'font-awesome-sass'
 gem 'best_in_place'
 gem 'roo'
 gem 'simple_form'
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
+gem "cancan"
+
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

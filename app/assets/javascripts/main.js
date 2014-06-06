@@ -1,4 +1,5 @@
-jQuery(document).ready(function($){
+$(document).ready(function() {
+
     //hamburger menu on mobile
     var $hamburger_menu= $('.hamburger'),
         $nav_menu= $('#navver');

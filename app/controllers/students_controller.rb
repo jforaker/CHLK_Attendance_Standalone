@@ -14,6 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def new
@@ -32,17 +33,23 @@ class StudentsController < ApplicationController
   def show
     authenticate_user!
     @student = Student.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render :json => @student }
+    @section = Student.find(params[:section_id])
+    if @student.teacher_id == current_user.id
+      respond_to do |format|
+        format.html
+        format.json { render :json => @student }
+      end
+    else
+      flash[:error] = "Not your student"
+      redirect_to sections_path
     end
   end
 
   def update
     @student = Student.find(params[:id])
     if @student.update_attributes(student_params)
-      flash[:notice] = "#{student_params.name} updated successfully."
-      redirect_to @student
+      flash[:notice] = "#{student_params['name']} updated successfully."
+      redirect_to section_path(@student.section_id)
     else
       flash[:error] = "student wasnt updated."
       redirect_to @student
@@ -55,8 +62,11 @@ class StudentsController < ApplicationController
       if "section_id" == "#{key}"
         @section = "#{value}"
       end
+      if "teacher_id" == "#{key}"
+        @teacher_id = "#{value}"
+      end
     end
-    Student.import(params[:file], @section)
+    Student.import(params[:file], @section, @teacher_id)
     redirect_to section_path(@section), notice: "students imported."
   end
 
@@ -64,6 +74,6 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:_json, :student, :name, :note, :section_id,  student_attributes: [ :name, :note, :section_id ])
+    params.require(:student).permit(:_json, :student, :name, :note, :section_id, :teacher_id,  student_attributes: [ :name, :note, :section_id ])
   end
 end

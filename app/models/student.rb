@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
 
   belongs_to :section
+  belongs_to :user
   has_many :sections, :through => :user
   has_many :notes
   has_many :section_ids
@@ -20,10 +21,13 @@ class Student < ActiveRecord::Base
     end
   end
 
-  def self.import(file, section)
+  def self.import(file, section, teacher_id)
     CSV.foreach(file.path, headers: true) do |row|
       a = row.to_hash
-      Student.create! a.merge('section_id' => section)
+      b = a.slice("name", "note")
+
+      Student.create! b.merge('section_id' => section, 'teacher_id' => teacher_id)
+      puts b
     end
   end
 end

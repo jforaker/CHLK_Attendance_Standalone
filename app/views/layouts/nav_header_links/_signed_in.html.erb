@@ -1,4 +1,4 @@
-<header data-type="settings">
+<header data-type="settings" role="banner">
   <div class="header-wrap">
     <div class="container">
       <div class="lock"></div>
@@ -14,7 +14,7 @@
                 <li><%= link_to 'Users', users_path %></li>
             <% end %>
         <% end %>
-        <li><%= link_to 'My Classes', sections_path %></li>
+        <li><%= link_to 'My Classes', sections_path  %></li>
         <li><%= link_to 'Settings', edit_user_registration_path %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete', :class => 'btn-signup btn-info' %></li>
       </ul>
