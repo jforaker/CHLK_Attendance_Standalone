@@ -4,7 +4,9 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = Student.new
+
+    #@student = Student.new(student_params)
     alert_message = student_params['name'] == "" ? "Must add a name" : "Unable to add #{student_params['name']}."
     if @student.save
       redirect_to section_path(params['student']['section_id']),   :notice => "#{student_params['name']} added successfully."
@@ -24,7 +26,7 @@ class StudentsController < ApplicationController
         @section = "#{value}"
       end
     end
-    @student = Student.new
+    @student = Student.new(:section_id => params[:section_id])
   end
 
   def destroy
@@ -67,7 +69,7 @@ class StudentsController < ApplicationController
       end
     end
     Student.import(params[:file], @section, @teacher_id)
-    redirect_to section_path(@section), notice: "students imported."
+    redirect_to section_session_path(@section, Time.now.strftime("%m-%d-%Y")), notice: "students imported."
   end
 
 

@@ -10,9 +10,12 @@ class SectionsController < ApplicationController
 
   def create
     @section = current_user.sections.build(section_params)
+    @section.user_id = current_user.id
+
+    puts section_params
     if @section.save
       flash[:notice] = "#{section_params['name']} submitted successfully."
-      redirect_to @section
+      redirect_to section_session_path(Time.now.strftime("%m-%d-%Y"), @section.id)
     else
       flash[:error] = "Error saving #{section_params['name']}."
       redirect_to sections_path
@@ -39,10 +42,10 @@ class SectionsController < ApplicationController
   def show
     @section = Section.find(params[:id])
     @students = @section.students
-    unless @section.user_id != current_user.id
+
+    if @section.user_id == current_user.id
       respond_to do |format|
         format.html
-        format.json { render json: @section}
       end
     else
       flash[:error] = "Error. Not your section."
@@ -51,10 +54,12 @@ class SectionsController < ApplicationController
   end
 
   def update
+    puts params
+    t = Time.now.strftime("%m-%d-%Y")
     @section = Section.find(params[:id])
     respond_to do |format|
       if @section.update_attributes(section_params)
-        format.html { redirect_to @section, notice: "#{section_params['name']}"' was successfully updated.' }
+        format.html { redirect_to section_session_path(@section.id, t), notice: "#{section_params['name']}"' was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

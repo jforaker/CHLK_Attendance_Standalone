@@ -1,0 +1,24 @@
+<% if current_user %>
+
+    <!--if signed in show settings / logout-->
+
+    <%= render 'layouts/nav_header_links/signed_in' %>
+
+
+
+<% elsif !current_user && action_name != 'new' %>
+
+    <!--not signed in == show all nav links (index / about / how works) -->
+
+    <%= render 'layouts/nav_header_links/not_signed_in' %>
+
+<% else %>
+
+    <!--only on signup page == show home / login -->
+
+    <%= render 'layouts/nav_header_links/signup_page' %>
+
+<% end %>
+
+
+<a href="#" class="listMenu"></a> <!-- clicked -->

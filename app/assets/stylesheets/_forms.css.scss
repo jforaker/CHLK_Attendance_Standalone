@@ -1,0 +1,58 @@
+@import 'compass';
+
+@import 'partials/variables'; // colors, fonts etc...
+
+
+.new-class{
+
+  H1{
+    text-align: center;
+  }
+}
+
+form.new-section, .new-sign-in {
+  width: 63%;
+  margin: 2em auto;
+  margin-bottom: 10em;
+  p {
+    margin: 1em 0;
+  }
+  label {
+    display: block;
+    font-size: .8125em;
+    margin-bottom: .5em;
+  }
+  input {
+    width: 100%;
+    border: 1px solid #c8c7c3;
+    padding: .6em 1em;
+    border-radius: 4px;
+    font-size: 1em;
+    @include box-shadow(inset 0 1px 3px rgba(black, .1));
+    &:focus {
+      outline: none;
+      border-color: lighten($blue, 10%);
+      @include box-shadow(0 0 3px rgba($blue, .5));
+    }
+  }
+  input[type='submit'] {
+    margin-top: 2em;
+    background: $blue;
+    @include background(linear-gradient(top, #568ea8, #2e657c));
+    border: 1px solid #29596e;
+    border-radius: 4px;
+    padding: 1em;
+    @include box-shadow(inset 0 1px 0 rgba(white, .3), 0 1px 3px rgba(black, .1));
+    color: white;
+    letter-spacing: .1em;
+    font-size: .875em;
+    cursor: pointer;
+
+    &.canceler{
+      border-color:$error;
+      background: rgba(230,82,82,0.04);
+      color:$error;
+      @include box-shadow(inset 0 1px 3px rgba($error, .06));
+    }
+  }
+}

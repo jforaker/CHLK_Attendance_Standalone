@@ -1,7 +1,9 @@
 <h1>Editing stu</h1>
 
-<%= simple_form_for @student do |f| %>
+<%= form_for @student do |f| %>
     <%= f.input :name %>
+    <%= f.input :note %>
+
     <%= f.button :submit %>
     <%= f.input :section_id, :as => :hidden, :input_html => { :value => @student.section_id } %>
     <%= f.input :teacher_id, :as => :hidden, :input_html => { :value => current_user.id } %>

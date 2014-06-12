@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.draggable
-//= require jquery.ui.droppable
+//= require jquery.ui.widget.js
 //= require bootstrap
-//= require best_in_place
 //= require moment
+//= require bootstrap-datepicker
+//= require bs-file-input
+//= require fullcalendar
+//= require gcal
+//= require selectBox
 //= require_tree .

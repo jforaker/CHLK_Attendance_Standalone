@@ -1,11 +1,16 @@
 
-<section data-type="settings">
-  <div class="settings-navigation container">
-
-    <p class="submit-case-note">Hello.</p>
-    <%= link_to 'Add a class', new_section_path(@section), class: 'sign-btn submit-case' %>
-
+<section id="tagline">
+  <div class="wrap">
+    <div class="taglineMessage">
+      <h1>Hello.</h1>
+      <% if current_user.sections.length == 0  %>
+          <h1> Add a class.</h1>
+          <p class="hello"></p>
+          <%= link_to 'Add a class', new_section_path(@section), class: 'btnBig' %>
+      <% else %>
+          <p class="hello"></p>
+          <%= link_to 'My Classes', sections_path, class: 'btnBig' %>
+      <% end %>
+    </div>
   </div>
 </section>
-
-

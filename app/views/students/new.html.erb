@@ -6,7 +6,7 @@
 
 
 
-      <%= simple_form_for @student do |f| %>
+      <%= simple_form_for  new_section_student_path(:student) do |f| %>
           <p>
             <%= f.label :name, wrapper: "basic", label: false %>
             <%= f.input :name,  wrapper: "basic", label: false %>
@@ -25,7 +25,7 @@
 
 
 
-          <%= f.submit 'Add student',  :class => 'sign-btn', :'data-type' => 'settings' %>
+          <%= f.submit :student,  :class => 'sign-btn', :'data-type' => 'settings' %>
 
       <% end %>
 

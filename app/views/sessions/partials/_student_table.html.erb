@@ -1,0 +1,43 @@
+<table class="table table-bordered table-hover" id="tab_logic" data-id="<%= @section.id %>">
+  <thead>
+  <tr>
+    <th class="text-center"> # </th>
+    <th class="text-center"> Name </th>
+    <th class="text-center">
+      Attendance for <input class="datepicker" data-date-format="mm-dd-yyyy" data-section-id="<%= @section.id %>">
+    </th>
+    <th class="text-center"> Attendance Status </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @section.students.each_with_index do |student, i|%>
+      <tr>
+        <td class="number">
+          <%= (i+1) %>
+        </td>
+        <td class="name">
+          <%= link_to student.name, section_student_path(:section_id => student.section_id, :id => student.id), class: 'btn-signup' %>
+        </td>
+        <td class="att">
+          <%= select_tag :status,  options_for_select([ "Select",["present", "present"], ["late", "late"], ["absent", "absent"], ["excused", "excused"]]),
+                         :class => 'drop select-style',
+                         'data-student-id' => student.id,
+                         'data-student-name' => student.name,
+                         'data-section-id' => student.section_id,
+                         'data-session-id' => params[:id] %>
+        </td>
+        <td class="status-<%= student.attendances.length > 0 ? student.attendances.last.id : 'nil-class' %>">
+          <span class="att-status-<%= student.id %>">
+            <%  @status.each do |item|  %>
+                    <% if item["student_id"] == student.id %>
+                          <%= item["status"] %>
+                    <% end %>
+            <% end %>
+        </span>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

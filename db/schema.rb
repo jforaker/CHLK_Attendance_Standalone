@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606174421) do
+ActiveRecord::Schema.define(version: 20140612201751) do
+
+  create_table "attendances", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "student_id"
+    t.integer  "section_id"
+    t.string   "session_id"
+    t.string   "student_name"
+  end
 
   create_table "sections", force: true do |t|
     t.string   "name"
@@ -24,6 +34,13 @@ ActiveRecord::Schema.define(version: 20140606174421) do
     t.boolean  "friday"
     t.boolean  "saturday"
     t.boolean  "sunday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.datetime "day"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -53,8 +70,10 @@ ActiveRecord::Schema.define(version: 20140606174421) do
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "role"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

@@ -9,17 +9,19 @@
   <%= csrf_meta_tags %>
 </head>
     <body>
-        <header>
-          <%= render 'layouts/navigation' %>
-        </header>
-        <main role="main">
-          <%= render 'layouts/messages' %>
-          <div class="container">
-            <div class="row-fluid">
-              <%= yield %>
-            </div>
+        <header role="banner">
+          <div class="wrap">
+            <%= render 'layouts/partials/navigation' %>
           </div>
-        </main>
-        <%= render 'layouts/footer' %>
+        </header>
+          <% if current_user && (controller.controller_name == 'sessions' && controller.action_name == 'show') %>
+              <%= render 'layouts/partials/classbar' %>
+          <% end %>
+
+          <%= render 'layouts/partials/messages' %>
+              <%= yield %>
+        <%= render 'layouts/partials/footer' %>
+          <%= render 'layouts/partials/login_modal' %>
+
     </body>
 </html>

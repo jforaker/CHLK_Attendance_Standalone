@@ -5,6 +5,8 @@ class Student < ActiveRecord::Base
   has_many :sections, :through => :user
   has_many :notes
   has_many :section_ids
+  has_many :attendances
+  has_many :sessions, through: :attendances
 
   validates_length_of :name, :minimum => 2, :maximum => 100, :allow_blank => false
 

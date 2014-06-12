@@ -1,0 +1,22 @@
+<div data-type="classbar" role="banner">
+    <div class="container">
+      <br >
+      <% if current_user.sections.length > 0 %>
+          <ul class="ds-btn">
+            <% current_user.sections.each do |section| %>
+                <li>
+                  <i class="fa fa-graduation-cap"></i>
+                  <%= link_to section_session_path(section.id, Time.now.strftime("%m-%d-%Y")) do %>
+                      <%= section.name %>
+                  <% end %>
+                </li>
+            <% end %>
+            <li>
+              <%= link_to '+ Add a class', new_section_path(), class: 'btn-signup' %>
+            </li>
+          </ul>
+      <% else %>
+          <%= link_to 'Add a class', new_section_path(@section), class: 'btn-signup' %>
+      <% end %>
+    </div>
+</div>

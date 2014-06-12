@@ -3,7 +3,16 @@
 @import '../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss';
 
 
-
+.container{
+  .row{
+    h1{
+      text-align: center;
+    }
+  }
+}
+.row{
+  margin-top: 3em;
+}
 
 input[type="checkbox"]{
   margin-left: 0px !important;
@@ -22,7 +31,7 @@ input[type="checkbox"]{
   width: 310px;
   height: auto;
   margin: 0px;
-  padding: 0px;
+  padding: 1em;
   list-style-type: none;
   z-index: 10000000;
 }
@@ -52,3 +61,4 @@ input[type="checkbox"]{
     display: none;
   }
 }
+

@@ -1,0 +1,16 @@
+
+<h1>Show <%= @secion.name %></h1>
+<p>
+  Download:
+  <%= link_to "CSV", section_attendances_path(format: "csv") %> |
+  <%= link_to "Excel", section_attendances_path(format: "xls") %>
+</p>
+
+
+<ul>
+<% @attendances.each do |a| %>
+
+    <li><%= a.student_name %> was <%= a.status %> on <%= a.session_id %></li>
+
+<% end %>
+</ul>

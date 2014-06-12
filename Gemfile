@@ -16,12 +16,13 @@ gem 'figaro', :github=>"laserlemon/figaro"
 gem 'pundit'
 gem 'compass-rails'
 gem 'font-awesome-sass'
-gem 'best_in_place'
+gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'roo'
 gem 'simple_form'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
 gem "cancan"
+gem 'rack-cors', :require => 'rack/cors'
 
 
 group :development do

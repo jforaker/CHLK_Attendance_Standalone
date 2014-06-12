@@ -1,13 +1,16 @@
 
 <% if user_signed_in? %>
     <%= render 'signed_in' %>
-
 <% else %>
-
-    <section id="intro">
-      <div class="caption container">
-        <h2>Sign up and add your classes.</h2>
+    <section id="tagline">
+      <div class="wrap">
+        <div class="taglineMessage">
+          <h1>Hello.</h1>
+          <h1>Sign up and add your classes.</h1>
+          <p>Take attendance something.</p>
+          <p class="hello"></p>
+          <%= link_to 'Add a class', new_section_path(@section), class: 'btnBig' %>
+        </div>
       </div>
     </section>
-
 <% end %>

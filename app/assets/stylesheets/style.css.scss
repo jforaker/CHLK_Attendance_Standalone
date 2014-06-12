@@ -7,27 +7,15 @@
 //= depend_on_asset "arrows-select.svg"
 //= depend_on_asset "arrow.svg"
 
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
-
 
 @import 'compass';
-
 @include global-reset; // compass style reset
-
 @import 'partials/variables'; // colors, fonts etc...
-
 @import 'partials/mixins'; // custom mixins
-
 @import 'partials/placeholders'; // clearfix, centering elements etc...
-
 @import 'partials/layout'; // responsive grid (susy) and media queries
-
-@import 'header_nav';
 @import 'index';
+@import "forms";
 
 
 /* --------------------------------
@@ -35,108 +23,65 @@
 Base rules
 
 -------------------------------- */
-
-
-html * {
+html, html a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
 *, *:after, *:before {
   @include box-sizing(border-box);
 }
 
+html, body {
+  min-height: 100%;
+  position: relative;
+}
+
 body {
   font: {
     size: 100%;
-    family: $base-font;  // $base-font;
+    family: $sans;
   }
-  color: $main-text;
-  background-color: $b-color;
+  color: $mainText;
+  background: #f7f7f5;
 }
 
-body, html {
-  overflow-x: hidden;
-}
-
-a {
-  color: $a;
-  text-decoration: none;
-  font-family: $base-font;
-}
-
-img, embed, object, video, svg {
+img,embed,object,video {
   max-width: 100%;
 }
 
-input, textarea {
-  font-family: $base-font;
-  @include font-size(16px);
+a {
+  color: $blue;
 }
 
+%speed { // Force Hardware Acceleration in WebKit
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #7b7974;
+}
 h1 {
-  font-family: $base-font;
-  @include font-size(18px);
-  font-weight: 700;
-  color: $main-title;
-  vertical-align: middle;
-
-  @include MQ(M) {
-    @include font-size(22px);
-  }
-
-  @include MQ(L) {
-    @include font-size(25px);
-  }
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
-h2 {
-  font-family: $base-narrow-font;
-  @include font-size(18px);
-  font-weight: 400;
-  color: $main-title;
-  // margin: 0 auto;
-  vertical-align: middle;
-
-  @include MQ(M) {
-    @include font-size(20px);
-  }
-
-  @include MQ(L) {
-    @include font-size(35px);
-  }
+p{
+  line-height: 2em;
 }
 
-h3 {
-  font-family: $base-narrow-font;
-  @include font-size(18px);
-  font-weight: 400;
-  color: $main-title;
-  vertical-align: middle;
+.left {
+  float: left;
 }
 
-h4 {
-  font-family: $base-font;
-  @include font-size(20px);
-  font-weight: 400;
-  color: $main-title;
-  vertical-align: middle;
-  padding-bottom: 15px;
-
-  @include MQ(M) {
-    @include font-size(35px);
-  }
+.right {
+  float: right;
 }
 
-p {
-  padding: 10px 0 0 0;
-  @include font-size(14px);
-  font-family: $base-font;
-  color: $main-text;
-  line-height: 1.5;
-
-  @include MQ(M) {
-    @include font-size(16px);
-  }
+.centered{
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
 }
-

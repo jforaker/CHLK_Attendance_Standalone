@@ -1,27 +1,20 @@
 <div class="container">
   <div class="row">
-    <section class="new-class" data-type="settings">
+    <section class="new-class">
 
-      <h1>Add a class</h1>
+      <header>
+        <h1>Add a class</h1>
+      </header>
 
-      <%= simple_form_for @section, :html => { :role => 'form', :"data-type" => 'signup', :id => 'former'} do |f| %>
+      <%= simple_form_for @section, :html => { :role => 'form', :class => 'new-section'} do |f| %>
           <p>
-            <%= f.label :name, wrapper: "basic", label: false %>
+            <label for="name">Name</label>
             <%= f.input :name, wrapper: "basic", label: false %>
           </p>
-
           <p>
             <%= f.label :description, wrapper: "basic", label: false %>
             <%= f.input :description, wrapper: "basic", label: false %>
-
           </p>
-
-          <p>
-            <%= f.label :student_count, wrapper: "basic", label: false %>
-            <%= f.input :student_count, wrapper: "basic", label: false %>
-
-          </p>
-          <!--<p>-->
 
         <span class="button-checkbox">
             <button type="button" class="btn" data-color="info">Monday</button>
@@ -52,12 +45,10 @@
              <%= f.input :sunday, :as => :boolean, hidden: true, class: 'hider', :'data-color' => 'primary', label: false%>
         </span>
 
+          <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
 
-
-
-          <%= f.button :submit, :class => 'sign-btn', :'data-type' => 'settings' %>
+          <%= f.button :submit, :class => 'submitter' %>
       <% end %>
-
     </section>
   </div>
 </div>

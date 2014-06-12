@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized, except: [:show]
-
   def index
     @users = User.all
     authorize @users
@@ -35,6 +34,10 @@ class UsersController < ApplicationController
     else
       redirect_to users_path, :notice => "Can't delete yourself."
     end
+  end
+
+  def devise_mapping
+    @devise_mapping ||= request.env["devise.mapping"]
   end
 
   private

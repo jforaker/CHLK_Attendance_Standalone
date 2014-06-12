@@ -1,9 +1,8 @@
-<h1>Editing class</h1>
+<h1>Editing <%= @section.name %></h1>
 
 <%= simple_form_for @section do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :student_count %>
     <%= f.button :submit %>
 <% end %>
 

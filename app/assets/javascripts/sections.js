@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function() {
-    jQuery(".best_in_place").best_in_place()
-    $('input[type=file]').bootstrapFileInput();
-    $('.file-inputs').bootstrapFileInput();
+
+//    jQuery(".best_in_place").best_in_place();
+
 
     var id = $('#section_path').attr('data-path');
     //var MYDAYS = [];

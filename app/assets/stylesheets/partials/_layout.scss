@@ -40,6 +40,7 @@ $XXL:   90em;     // 1440px
   width: 90%;
   max-width: $XL;
   margin: 0 auto;
+  background: #fff;
 
   &::after { // clearfix
     content: '';

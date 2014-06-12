@@ -1,0 +1,46 @@
+<%= render 'sessions/partials/profile' %>
+
+<div class="container">
+  <% if @section.students.count == 0  %>
+
+      <div class="row clearfix">
+        <div class="col-md-12 column">
+
+          <p>No students yet  (@jake - check add single student path)</p>
+
+          <!--<#%= link_to 'add student', new_section_student_path(@section) %>&ndash;&gt;-->
+        </div>
+      </div>
+  <% else %>
+
+      <%= render 'sessions/partials/student_table' %>
+
+  <% end %>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+      <h2>Import Students</h2>
+
+      <div class="input-group image-preview">
+
+        <%= form_tag import_section_students_path(@section.id), id: 'inputer', multipart: true do %>
+
+            <%= file_field_tag :file, 'data-filename-placement' => 'inside', title: 'Browse' %>
+            <%= hidden_field_tag :section_id, @section.id %>
+            <%= hidden_field_tag :teacher_id, current_user.id %>
+            <%= submit_tag "Import", class: 'btn btn-disabled', disabled: true, id: 'impBtn' %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row full-calendar">
+    <div id="calendar" style="display: none"></div>
+    <input type="hidden" id="section_path" data-name="<%= @section.name %>" data-path="<%= @section.id %>" name="section_path" value="foo">
+  </div>
+
+</div>

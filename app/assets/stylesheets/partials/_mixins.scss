@@ -73,3 +73,36 @@
 
 
 
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == XXS {
+    @media only screen and (max-width: 20em) { @content; } //320px
+  }
+  @else if $canvas == XS {
+    @media only screen and (max-width: 30em) { @content; } //480px
+  }
+  @else if $canvas == S {
+    @media only screen and (max-width: 37.5em) { @content; } //600px
+  }
+  @else if $canvas == M {
+    @media only screen and (max-width: 48em) { @content; } //768px
+  }
+  @else if $canvas == L {
+    @media only screen and (max-width: 64em) { @content; } //1024px
+  }
+  @else if $canvas == XL {
+    @media only screen and (min-width: 75em) { @content; } //1200px
+  }
+}
+
+
+// calc ()
+
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}

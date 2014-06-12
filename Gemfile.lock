@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: df178520bf9ba405baee9528d5dbb630d6ff760c
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
+GIT
   remote: git://github.com/laserlemon/figaro.git
   revision: ae200e44e8f2770ce1037753865985b02ee0048f
   specs:
@@ -36,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
-    best_in_place (0.2.3)
-      rails (>= 3.0.0)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -107,6 +113,7 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-cors (0.2.9)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.1)
@@ -182,7 +189,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  best_in_place
+  best_in_place!
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.1.1)
@@ -200,6 +207,7 @@ DEPENDENCIES
   momentjs-rails
   pundit
   quiet_assets
+  rack-cors
   rails (= 4.1.1)
   rails_layout
   roo

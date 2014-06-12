@@ -1,19 +1,21 @@
 <div class="container">
   <div class="row">
     <h1>Classes</h1>
-    <%= link_to 'Add a class', new_section_path(@section), class: 'btn-signup' %>
+    <%= link_to 'Add a class', new_section_path(@section), class: 'centered' %>
 
     <% if current_user.sections.length > 0 %>
 
-        <ul class="ds-btn">
+        <ul class="ds-btn centered" >
 
           <% current_user.sections.each do |section| %>
               <li>
-                <a class="btn btn-lg " href="sections/<%= section.id %>">
+
+                <!--TODO - remove sessions?-->
+
+                <a class="btn btn-lg " href="sections/<%= section.id %>/sessions/<%= Time.now.strftime("%m-%d-%Y") %>">
                   <i class="glyphicon glyphicon-th pull-left"></i>
                 <span><%= section.name %><br>
                   <small><%= section.description %></small>
-                  <p class=""><%= section.student_count %> students</p>
                 </span>
                 </a>
               </li>

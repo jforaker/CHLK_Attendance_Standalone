@@ -1,0 +1,55 @@
+<div id="login">
+  <div id="makeLogin" class="loginContainer">
+
+    <header>
+      <h1>Login</h1>
+      <span class="close"></span>
+    </header>
+
+    <%= simple_form_for(:user, :url => user_session_path, :html => {:id => 'login-form'} ) do |f| %>
+        <p>
+          <label for="email">Email</label>
+          <%= f.email_field :email, :autofocus => true%>
+        </p>
+        <p>
+          <label for="password">Password</label>
+          <%= f.password_field :password %>
+        </p>
+
+        <%= f.submit 'LOGIN' %>
+
+        <p class="stay-logged-in">
+          <%= f.input :remember_me, :as => :boolean, :id => 'stay-logged-in', :name => 'stay-logged-in', :label => false, :inline_label => true if devise_mapping.rememberable? %>
+        </p>
+    <% end %>
+
+    <footer>
+      <p>Already using Chalkable. <a href="https://chalkable.com/">Sign into Chalkable</a></p>
+    </footer>
+  </div>
+
+
+  <!--<div id="resetPassword" class="loginContainer hide">-->
+    <!--<header>-->
+      <!--<h1>Reset password</h1>-->
+      <!--<span class="close"></span>-->
+    <!--</header>-->
+
+    <!--<form>-->
+      <!--<p>-->
+        <!--<label for="email">Email</label>-->
+        <!--<input type="email" name="email" id="email">-->
+      <!--</p>-->
+
+      <!--<p>-->
+        <!--<input type="submit" value="SUBMIT">-->
+      <!--</p>-->
+      <!--<p class="forgotPassword">-->
+        <!--<a href="#">Back to login</a>-->
+      <!--</p>-->
+    <!--</form>-->
+    <!--<footer>-->
+      <!--<p>Check out your email. We just sent you an email with a link to reset your password.</p>-->
+    <!--</footer>-->
+  <!--</div>-->
+</div>

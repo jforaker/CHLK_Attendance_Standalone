@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h1>index</h1>
+
+    <p>
+      Download:
+      <%= link_to "CSV", section_attendances_path(format: "csv") %> |
+      <%= link_to "Excel", section_attendances_path(format: "xls") %>
+    </p>
+
+    <p>Or choose a date</p>
+    <p>
+      <input value="<%= Time.now.strftime("%m-%d-%Y") %>" class="datepicker export" data-date-format="mm-dd-yyyy" data-section-id="<%= params[:section_id] %>">
+
+    </p>
+
+    <% @attendances.each do |s| %>
+
+        <p><%= s.student_name %>: <%= s.status %></p>
+    <% end %>
+
+
+  </div>
+</div>
